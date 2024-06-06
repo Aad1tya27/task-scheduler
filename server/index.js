@@ -4,6 +4,9 @@ var cors = require("cors")
 const jwt = require("jsonwebtoken")
 const port = 3000
 const app = express();
+const mongoose = require("mongoose")
+
+// mongoose.connect("mongodb+srv://agarwalaaditya2765:FyiCgRWBbKSWaId2@cluster0.aauygla.mongodb.net/todo_app")
 
 var id = 3;
 app.use(cors())
