@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const bodyParser = require('body-parser');
 var cors = require("cors")
@@ -6,7 +7,7 @@ const port = 3000
 const app = express();
 const mongoose = require("mongoose")
 
-// mongoose.connect("mongodb+srv://agarwalaaditya2765:FyiCgRWBbKSWaId2@cluster0.aauygla.mongodb.net/todo_app")
+mongoose.connect(process.env.MONGO_DB_URI)
 
 var id = 3;
 app.use(cors())
