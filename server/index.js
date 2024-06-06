@@ -1,13 +1,12 @@
 require("dotenv").config()
 const express = require('express');
-const bodyParser = require('body-parser');
 var cors = require("cors")
 const jwt = require("jsonwebtoken")
 const port = 3000
 const app = express();
 const mongoose = require("mongoose")
+const {userMiddleware} = require("./middlewares/user")
 
-mongoose.connect(process.env.MONGO_DB_URI)
 
 var id = 3;
 app.use(cors())
@@ -18,9 +17,12 @@ app.get("/",(req,res)=>{
 	res.send("hello");
 })
 
+app.use(userMiddleware)
+
 app.get('/todos', (req, res) => {
 	res.status(200).send(todos)
 })
+
 app.post('/todos', (req, res) => {
 	const todo = req.body;
 	console.log(req.body);
@@ -32,14 +34,8 @@ app.post('/todos', (req, res) => {
 	todos.push(todo)
 	res.status(201).send("received")
 })
-// app.get('/todos/:id', (req, res) => {
-// 	const todo = todos.find((element) => element["id"] == req.params.id);
-// 	if (todo) {
-// 		res.status(200).send(todo)
-// 	}else{
-// 		res.status(404).send("Not Found")
-// 	}
-// })
+
+
 app.put('/todos/:id', (req, res) => {
 	const todo = todos.find((element) => element["id"] == req.params.id);
 	if (todo) {
