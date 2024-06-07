@@ -12,7 +12,7 @@ router.post('/todos', (req, res) => {
 	const todo = req.body;
 	console.log(req.body);
 
-	todo["id"] = id;
+	// todo["id"] = id;
 	todo["completed"] = false;
 	id++;
 	console.log(todo)
