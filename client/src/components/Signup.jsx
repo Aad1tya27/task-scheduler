@@ -57,7 +57,11 @@ const Signup = () => {
             <input {...register("password", {
               required: true
             })} className='mx-2 px-2 rounded border border-black bg-slate-50 p-2 w-[90%] sm:w-[80%]' type="password" name="password" id="password" placeholder='Enter your password' />
-            <button onClick={()=>clearErrors()} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">Sign Up</button>
+            <button onClick={()=>{
+              if(errors){
+                clearErrors()
+              }
+              }} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">Sign Up</button>
             {errors.existingUser && <div className='text-red-500'>{errors.existingUser.message}</div>}
             <NavLink to={"/login"}>Already a user? Login</NavLink>
           </form>
