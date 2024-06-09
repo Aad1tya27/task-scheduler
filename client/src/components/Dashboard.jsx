@@ -10,6 +10,7 @@ const Dashboard = () => {
         handleSubmit,
         setError,
         watch,
+        reset,
         formState: { errors, isSubmitting },
     } = useForm()
     const [tasks, setTasks] = useState([])
@@ -25,6 +26,10 @@ const Dashboard = () => {
             // console.log("hello")
             response.json().then((jsonData) => {
                 // console.log(jsonData.msg, jsonData.tasks);
+                reset({
+                    title:'',
+                    description: ''
+                })
                 setTasks(jsonData.tasks);
             })
         }).catch(err => {
