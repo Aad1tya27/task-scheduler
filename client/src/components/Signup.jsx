@@ -11,7 +11,7 @@ const Signup = () => {
     formState: { errors, isSubmitting },
   } = useForm()
   const onSubmit = (data) => {
-    console.log(data)
+    // console.log(data)
     fetch(`${import.meta.env.VITE_SERVER_URI}/signup`, {
       method: 'POST',
       headers: {
@@ -20,7 +20,7 @@ const Signup = () => {
       body: JSON.stringify(data),
     }).then((response) => {
       response.json().then((msg) => {
-        console.log(msg)
+        // console.log(msg)
         if(!(msg.msg == "User Already Exists")){
           localStorage.setItem("token",msg.token)
           localStorage.setItem("name",data.name)

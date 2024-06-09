@@ -23,7 +23,7 @@ app.post("/signup", async (req, res) => {
 	const existingUser = await User.findOne({
 		email: req.body.email
 	})
-	console.log(existingUser)
+	// console.log(existingUser)
 	if (!existingUser) {
 		const hash = createHmac('sha256', process.env.CRYPTO_SECRET)
 			.update(req.body.password)
@@ -61,7 +61,7 @@ app.post("/signin", async (req, res) => {
 	})
 
 	if (validUser) {
-		console.log("hi")
+		// console.log("hi")
 		const token = jwt.sign({
 			name: validUser.name,
 			email: req.body.email

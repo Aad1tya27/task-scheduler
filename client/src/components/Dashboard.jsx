@@ -22,9 +22,9 @@ const Dashboard = () => {
             },
             body: JSON.stringify(data),
         }).then((response) => {
-            console.log("hello")
+            // console.log("hello")
             response.json().then((jsonData) => {
-                console.log(jsonData.msg, jsonData.tasks);
+                // console.log(jsonData.msg, jsonData.tasks);
                 setTasks(jsonData.tasks);
             })
         }).catch(err => {
@@ -43,11 +43,11 @@ const Dashboard = () => {
                 }
             });
             let todos = await todosReq.json()
-            console.log(todos.tasks, typeof (todos))
+            // console.log(todos.tasks, typeof (todos))
             setTasks(todos.tasks);
         }
         if (!localStorage.getItem("token")) {
-            console.log("hi")
+            // console.log("hi")
             navigate("/signup")
         } else {
             fetchData()

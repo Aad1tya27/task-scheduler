@@ -12,7 +12,7 @@ const Login = () => {
     formState: { errors, isSubmitting, setSubmitting },
   } = useForm()
   const onSubmit = (data) => {
-    console.log(data)
+    // console.log(data)
     fetch(`${import.meta.env.VITE_SERVER_URI}/signin`, {
       method: 'POST',
       headers: {
@@ -21,7 +21,7 @@ const Login = () => {
       body: JSON.stringify(data),
     }).then((response) => {
       response.json().then((msg) => {
-        console.log(msg)
+        // console.log(msg)
         if (!(msg.msg == "User Not Found" || msg.msg=="Invalid Credentials")) {
           localStorage.setItem("token",msg.token)
           localStorage.setItem("name",msg.name)

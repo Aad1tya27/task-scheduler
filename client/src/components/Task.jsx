@@ -12,8 +12,8 @@ const Task = (props) => {
             },
         }).then(response => {
             response.text().then(msg => {
-                console.log(msg)
-                console.log(props.tasks[0])
+                // console.log(msg)
+                // console.log(props.tasks[0])
                 let newTasks = props.tasks[0].filter(task => {
                     if (task._id != props.id) {
                         return task
@@ -26,7 +26,7 @@ const Task = (props) => {
 
     }
     const handleChange = (e) => {
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
         fetch(`${import.meta.env.VITE_SERVER_URI}/user/todos/${props.id}`, {
             method: 'PUT',
             headers: {
@@ -36,7 +36,7 @@ const Task = (props) => {
         }).then((response) => {
             response.text().then((msg) => {
                 console.log(msg);
-                console.log(props.tasks[0])
+                // console.log(props.tasks[0])
             })
         })
         // const msg = await response.text();
