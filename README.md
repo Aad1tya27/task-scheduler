@@ -9,6 +9,12 @@ Json Web Tokens are sent as headers in every POST request to ensure that the use
 I have used Local Storage to store basic User Information(name, email, jwts).
 
 
+
+#### Visit this link to view the deployed version: [Task Scheduler](https://task-scheduler-frontend.onrender.com)
+
+
+
+
 ## Run Locally
 
 Clone the project
@@ -94,10 +100,5 @@ Start the server
 **Server:** Node, Express
 
 **Database:** MongoDB
-
-## Deployment
-
-Visit this link to view the deployed version: [Task Scheduler](https://task-scheduler-frontend.onrender.com)
-
 
 
