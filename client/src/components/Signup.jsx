@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { NavLink, Navigate , useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 const Signup = () => {
@@ -35,6 +35,11 @@ const Signup = () => {
       console.log("login request failed")
     })
   }
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      navigate("/")
+    }
+  }, [])
   return (
     <>
       <div className='w-full h-[100vh] bg-gradient-to-br from-[#132732] from-40% to-[#7a7573]'>
