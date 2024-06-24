@@ -11,11 +11,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <><Navbar /><Dashboard /></>
+      element: <><main className='bg-gradient-to-b from-[#0c1015] from-5% to-[#1c2b34]'><Navbar /><Dashboard /></main></>
     },
     {
       path: "/profile",
-      element: <><Navbar /><Profile /></>
+      element: <><main className='bg-gradient-to-b from-[#0c1015] from-5% to-[#1c2b34]'><Navbar /><Profile /></main></>
     }, {
       path: "/signup",
       element: <><Signup /></>
