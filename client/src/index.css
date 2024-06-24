@@ -4,19 +4,15 @@
 
 
 .taskRow:hover {
-    animation: taskAnim 0.2s ease-in 0s forwards;
+    animation: taskAnim 0s ease-in 0s forwards;
+    color:rgb(224, 214, 203);
 }
 
 
 @keyframes taskAnim {
-    from {
-        --tw-bg-opacity: 1;
-        background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-    }
-
     to {
         --tw-bg-opacity: 1;
-        background-color: rgb(2 6 23 / var(--tw-bg-opacity));
+        background-color: rgb(0 0 0 / var(--tw-bg-opacity));
         color: white;
     }
 }

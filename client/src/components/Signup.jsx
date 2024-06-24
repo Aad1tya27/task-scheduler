@@ -9,10 +9,13 @@ const Signup = () => {
     setError,
     clearErrors,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const onSubmit = (data) => {
     // console.log(data)
+    setIsSubmitting(true);
     fetch(`${import.meta.env.VITE_SERVER_URI}/signup`, {
       method: 'POST',
       headers: {
@@ -33,6 +36,8 @@ const Signup = () => {
       })
     }).catch((err) => {
       console.log("login request failed")
+    }).finally(()=>{
+      setIsSubmitting(false);
     })
   }
   useEffect(() => {
@@ -42,7 +47,7 @@ const Signup = () => {
   }, [])
   return (
     <>
-      <div className='w-full h-[100vh] bg-gradient-to-br from-[#132732] from-40% to-[#7a7573]'>
+      <div className='w-full h-[100vh] bg-gradient-to-b from-[#0c1015] from-5% to-[#1c2b34]'>
         <div className="headings absolute w-full flex justify-center items-center h-[30vh]">
           <h1 className='m-5  text-[40px] text-white font-medium'>Task Scheduler</h1>
         </div>
@@ -67,7 +72,7 @@ const Signup = () => {
               if(errors){
                 clearErrors()
               }
-              }} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">Sign Up</button>
+              }} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">{isSubmitting?"Signing Up...":"Sign Up"}</button>
             {errors.existingUser && <div className='text-red-500'>{errors.existingUser.message}</div>}
             <NavLink to={"/login"}>Already a user? Login</NavLink>
           </form>

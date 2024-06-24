@@ -20,7 +20,6 @@ router.post('/todos', userMiddleware, async(req, res) => {
 	const userInfo = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET);
 	// console.log(req.body);
 	const task = new Task({
-		title: req.body.title,
 		description: req.body.description,
 		completed: false
 	});	

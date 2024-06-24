@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 const Login = () => {
@@ -9,10 +9,12 @@ const Login = () => {
     setError,
     clearErrors,
     watch,
-    formState: { errors, isSubmitting, setSubmitting },
+    formState: { errors },
   } = useForm()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const onSubmit = (data) => {
     // console.log(data)
+    setIsSubmitting(true);
     fetch(`${import.meta.env.VITE_SERVER_URI}/signin`, {
       method: 'POST',
       headers: {
@@ -33,6 +35,8 @@ const Login = () => {
       })
     }).catch((err) => {
       console.log("login request failed")
+    }).finally(()=>{
+      setIsSubmitting(false);
     })
   }
   useEffect(() => {
@@ -43,7 +47,7 @@ const Login = () => {
   
   return (
     <>
-      <div className='w-full h-[100vh] bg-gradient-to-br from-[#132732] from-40% to-[#7a7573]'>
+      <div className='w-full h-[100vh] bg-gradient-to-b from-[#0c1015] from-5% to-[#1c2b34]'>
         <div className="headings absolute w-full flex justify-center items-center h-[30vh]">
           <h1 className='m-5  text-[40px] text-white font-medium'>Task Scheduler</h1>
         </div>
@@ -65,7 +69,7 @@ const Login = () => {
               if(errors){
                 clearErrors()
               }
-              }} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">Login</button>
+              }} disabled={isSubmitting} className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">{isSubmitting?"Logging In...":"Login"}</button>
             {errors.notFound && <div className='text-red-500'>{errors.notFound.message}</div>}
             {/* <button className='text-xl bg-slate-800 text-white p-2 rounded px-4 w-[90%] sm:w-[80%]' type="submit">Login</button> */}
             <NavLink to={"/signup"}>Not a user? Sign Up</NavLink>
