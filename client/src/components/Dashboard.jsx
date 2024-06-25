@@ -62,6 +62,7 @@ const Dashboard = () => {
             navigate("/signup")
         } else if (localStorage.getItem("tasks")) {
             setTasks(JSON.parse(localStorage.getItem("tasks")));
+            fetchData()
             console.log("hi");
         } else {
             fetchData()
